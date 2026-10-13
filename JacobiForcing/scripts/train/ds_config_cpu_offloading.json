@@ -1,0 +1,23 @@
+{
+  "bf16": { "enabled": true },
+  "zero_optimization": {
+    "stage": 3,
+    "offload_param":     { "device": "none"},
+    "offload_optimizer": { "device": "none"},
+
+    "allgather_partitions": true,
+    "overlap_comm": false,
+    "reduce_scatter": true,
+    "contiguous_gradients": true,
+    "stage3_param_persistence_threshold": 0
+  },
+  "activation_checkpointing": {
+    "partition_activations": true,
+    "cpu_checkpointing": false,
+    "contiguous_memory_optimization": true
+  },
+  "gradient_accumulation_steps": 1,
+  "train_micro_batch_size_per_gpu": 1,
+  "zero_allow_untested_optimizer": true,
+  "zero_force_ds_cpu_optimizer": true
+}
